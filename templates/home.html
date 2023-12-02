@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>bruh</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+
+<body>
+            <div ><a href="{{url_for('login')}}" >sign out</a>
+    </nav>
+    </div>
+    <h1>Home page</h1>
+    <h2>hello {{name}}</h2>
+
+    <div class="row">
+
+        <!-- sub -->
+        <div class="column">
+            <a>c1</a>
+            
+
+        {%if length==1%}
+            <row>
+                {% for i ,image in sub_list: %}
+                <row>
+                    <p>song: {{ i }} </p>
+                    
+                    <img src={{image}} style="width: 250px">
+                    <form action="/delete_item" method="POST">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        <input type="hidden" name="_token" value= "{{i}}" >
+                        <input type="submit" value="Delete">
+                    </form>
+                </row>
+                {% endfor %}<
+        </row>
+        {% elif length>1 %}
+            {% for i ,image in sub_list: %}
+            <row>
+                <p>song: {{ i }} </p>
+                <img src={{image}} style="width: 250px">
+                <form action="/delete_item" method="POST">
+                    
+                    <input type="hidden" name="_method" value="DELETE" />
+                    <input type="hidden" name="_token" value= "{{i}}" >
+                    <input type="submit" value="Delete">
+                </form>
+            </row>
+            {% endfor %}
+        {% else %}
+                <p>No Subsciptions on this account</p>
+
+        {% endif %}
+            <!-- <h1>{{sub_list}}</h1> -->
+        </div>
+        <!-- query -->
+        <div class="column">
+            <a>c12</a>
+            <form method="post" action = "/query">
+                <h2 class="text-center"></h2>
+                <div class="form-group"><input class="form-control" type="Title" name="Title" placeholder="Title"></div>
+                <div class="form-group"><input class="form-control" type="Artist" name="Artist" placeholder="Artist"></div>
+                <div class="form-group"><input class="form-control" type="Year" name="Year" placeholder="Year "></div>
+ 
+                <input type="submit" name="query" value="query">
+            
+            </form>
+            <p>{{message}}</p>>
+
+            {% for j  in song_list: %}
+            <p>{{j}}</p>
+            {% endfor %}
+      </div>
+</body>
+
+</html>
